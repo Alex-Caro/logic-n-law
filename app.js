@@ -19,16 +19,33 @@ const DATA = [
   { tag: "Amendment X", title: "Reserved powers", text: "The powers not delegated to the United States by the Constitution, nor prohibited by it to the States, are reserved to the States respectively, or to the people." }
 ];
 
-const list = document.getElementById("list");
-const q = document.getElementById("q");
-
-function render(filter) {
-  const f = (filter || "").toLowerCase();
-  list.innerHTML = DATA.filter((d) =>
-    (d.tag + " " + d.title + " " + d.text).toLowerCase().includes(f)
-  ).map((d) => `<article><p class=\"tag\">${d.tag}</p><h2>${d.title}</h2><p>${d.text}</p></article>`).join("")
-    || "<p>No match. Try speech, search, or jury.</p>";
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[c]));
 }
 
-q.addEventListener("input", (e) => render(e.target.value));
-render("");
+function render(filter) {
+  try {
+    const list = document.getElementById("list");
+    if (!list) return;
+    const f = String(filter || "").slice(0, 80).toLowerCase();
+    const rows = DATA.filter((d) =>
+      (d.tag + " " + d.title + " " + d.text).toLowerCase().includes(f)
+    );
+    list.innerHTML = rows.length
+      ? rows.map((d) => "<article><p class=\"tag\">" + escapeHtml(d.tag) + "</p><h2>" + escapeHtml(d.title) + "</h2><p>" + escapeHtml(d.text) + "</p></article>").join("")
+      : "<p>No match. Try speech, search, or jury.</p>";
+  } catch (err) {
+    const list = document.getElementById("list");
+    if (list) list.textContent = "Could not render. Reload the page.";
+  }
+}
+
+try {
+  const q = document.getElementById("q");
+  if (q) q.addEventListener("input", (e) => render(e.target.value));
+  render("");
+} catch (err) {
+  document.body.appendChild(document.createTextNode("App failed to start."));
+}
