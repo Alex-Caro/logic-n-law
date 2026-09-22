@@ -1,0 +1,11 @@
+:root { font-family: Georgia, serif; background: #111; color: #eee; }
+body { max-width: 720px; margin: 0 auto; padding: 24px; }
+h1 { font-size: 2rem; margin: 0 0 8px; }
+.kicker { letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.75rem; color: #bbb; }
+.lede, .banner, footer { color: #ccc; }
+.banner { border: 1px solid #444; padding: 12px; }
+input { width: 100%; padding: 10px; margin: 16px 0; background: #1c1c1c; color: #fff; border: 1px solid #333; }
+article { border-top: 1px solid #333; padding: 16px 0; }
+article h2 { margin: 0 0 8px; font-size: 1.1rem; }
+.tag { font-size: 0.75rem; color: #9ad; }
+a { color: #9ad; }
