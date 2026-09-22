@@ -1,31 +1,20 @@
 # Logic N Law
 
-Educational browser app for the U.S. Constitution and Bill of Rights.
+Educational Constitution and Bill of Rights reference.
 
-**This is not a lawyer. This is not legal advice.** It is a study tool that points at public-domain text and official sources.
+**Not a lawyer. Not legal advice. Not licensed.** See DISCLAIMER.md.
 
 ## Live
 
-After GitHub Pages is on: https://alex-caro.github.io/logic-n-law/
+https://alex-caro.github.io/logic-n-law/
 
-## What it shows
+## Keys (local only)
 
-- Preamble
-- Article I–VII one-line map
-- Amendments 1–10 (Bill of Rights) with official text
-- Search across titles and text
-- Links to archives.gov
+Gemini: https://aistudio.google.com/apikey
+DeepSeek: https://platform.deepseek.com
 
-Federal statutes, Florida statutes, and municipal codes are **not** bundled. Those change and need the official reporter. The app tells you where to look.
+Copy `config.example.js` to `config.local.js` and paste keys there if you run a private fork on your laptop. `config.local.js` is gitignored.
 
-## Stack
+Do not put keys in this public repo. Do not load keys on GitHub Pages. Anyone can view page source.
 
-Static HTML, CSS, and JavaScript. No backend. No API keys.
-
-## Run locally
-
-Open `index.html` in a browser.
-
-## Author
-
-Alexander Caro
+This hosted demo does not call Gemini or DeepSeek. It uses bundled public-domain text so Grok tokens and API spend stay at zero.
